@@ -269,30 +269,43 @@ function Queue() {
             </div>
 
             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <select
-              value={isPregnant}
-              onChange={(e) => setIsPregnant(e.target.value)}
-              style={{
-                width: '60%',
-                padding: '10px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                fontSize: '14px',
-                backgroundColor: '#fff',
-                color : isPregnant ? 'black' : 'grey',
-              }}
-            >
-              <option value="">เลือกสถานะการตั้งครรภ์</option>
-              <option value="ตั้งครรภ์">ตั้งครรภ์</option>
-              <option value="ไม่ตั้งครรภ์">ไม่ตั้งครรภ์</option>
-            </select>
-          </div>
+              <label 
+                style={{ 
+                  fontSize: '14px', 
+                  color: 'red', 
+                  marginBottom: '5px', 
+                  display: 'inline-block', // ทำให้ข้อความอยู่ในบรรทัดเดียวกับช่อง
+                  textAlign: 'left', 
+                  width: '60%' // ให้ขนาดของ label เท่ากับขนาดของช่อง select
+                }}
+              >
+                *โปรดเลือก
+              </label>
+              <select
+                value={isPregnant}
+                onChange={(e) => setIsPregnant(e.target.value)}
+                style={{
+                  width: '60%', // ให้ขนาดของ select เท่ากับ label
+                  padding: '10px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                  fontSize: '14px',
+                  backgroundColor: '#fff',
+                  color : isPregnant ? 'black' : 'grey',
+                }}
+              >
+                <option value="">เลือกสถานะการตั้งครรภ์</option>
+                <option value="ตั้งครรภ์">ตั้งครรภ์</option>
+                <option value="ไม่ตั้งครรภ์">ไม่ตั้งครรภ์</option>
+              </select>
+            </div>
+
 
 
             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
               <div style={{ width: '60%', margin: '0 auto' }}>
                 <label style={{ fontSize: '14px', color: '#555', marginBottom: '5px', display: 'block', textAlign: 'left' }}>
-                  วันที่เป็นประจำเดือนวันสุดท้าย 
+                  วันที่เป็นประจำเดือนวันสุดท้าย (เฉพาะผู้ที่ตั้งครรภ์)
                 </label>
                 <input
                   type="date"
