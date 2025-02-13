@@ -14,19 +14,19 @@ function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
         const hashedPassword = md5(password);  // แปลงรหัสผ่านเป็น md5
-
+    
         // ตรวจสอบข้อมูลก่อนส่งคำขอ
         console.log("Sending POST request with data:", { username, password: hashedPassword });
-
+    
         try {
             // ส่งคำขอไปยัง API เฉพาะ username และ password
             const response = await axios.post('/api/check-login', {
                 username: username,
                 password: hashedPassword
             });
-
+    
             console.log("Response from API:", response);  // ตรวจสอบการตอบกลับจาก API
-
+    
             if (response.data.message === 'Login successful') {
                 Swal.fire({
                     title: 'สำเร็จ!',
@@ -39,13 +39,25 @@ function Login() {
                     router.push('/admin-check-queue'); // Redirect to the desired page
                 }, 1000);
             } else {
-                setError('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+                // แสดง SweetAlert เมื่อชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+                Swal.fire({
+                    title: 'เข้าสู่ระบบไม่สำเร็จ!',
+                    text: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
+                    icon: 'error',
+                    showConfirmButton: true
+                });
             }
         } catch (error) {
             console.error("Error in POST request:", error);  // เพิ่มการตรวจสอบข้อผิดพลาด
-            setError('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
+            Swal.fire({
+                title: 'ข้อผิดพลาด!',
+                text: 'เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์',
+                icon: 'error',
+                showConfirmButton: true
+            });
         }
     };
+    
 
     return (
         <div style={{ fontFamily: 'sans-serif', margin: 0, padding: 0, overflow: 'hidden' }}>

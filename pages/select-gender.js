@@ -14,7 +14,7 @@ function SelectGender() {
         if (selectedGender === 'male') {
             router.push('/queue-men');
         } else if (selectedGender === 'female') {
-            router.push('/select-pregnant');
+            router.push('/queue-women');
         } else {
             alert('โปรดเลือกเพศก่อนดำเนินการ');
         }

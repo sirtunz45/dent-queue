@@ -14,14 +14,13 @@ async function createDBConnection() {
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { username, password } = req.body;
-    console.log("Data received on server:", { username, password }); // ตรวจสอบข้อมูลที่ได้รับ
+    console.log("Data received on server:", { username, password });
 
     if (!username || !password) {
-      return res.status(400).json({ error: 'Username และ Password ต้องไม่เป็นค่าว่าง' });
+      return res.status(400).json({ message: 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน' });
     }
 
-    const hashedPassword = password; // แปลงรหัสผ่านเป็น MD5
-    console.log(hashedPassword,username);
+    const hashedPassword = password;
     let connection;
     try {
       connection = await createDBConnection();
@@ -32,17 +31,21 @@ export default async function handler(req, res) {
         WHERE username = ? and password = ?
       `;
 
-      const [rows] = await connection.execute(query,[username,hashedPassword]);
+      const [rows] = await connection.execute(query, [username, hashedPassword]);
 
       if (rows.length > 0) {
         const user = rows[0];
-        return res.status(200).json({ message: 'Login successful', user: { id: user.id, fname: user.fname, lname: user.lname, username: user.username, status: user.status } });
+        return res.status(200).json({
+          message: 'Login successful',
+          user: { id: user.id, fname: user.fname, lname: user.lname, username: user.username, status: user.status }
+        });
       } else {
-        return res.status(400).json({ error: 'Username หรือ Password ไม่ถูกต้อง' });
+        // ส่งข้อความที่เหมาะสมเมื่อชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+        return res.status(200).json({ message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
       }
     } catch (error) {
       console.error('Database Error:', error.message);
-      res.status(500).json({ error: 'ไม่สามารถเชื่อมต่อฐานข้อมูลได้' });
+      res.status(500).json({ message: 'ไม่สามารถเชื่อมต่อฐานข้อมูลได้' });
     } finally {
       if (connection) {
         await connection.end();
@@ -50,6 +53,6 @@ export default async function handler(req, res) {
     }
   } else {
     res.setHeader('Allow', ['POST']);
-    res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+    res.status(405).json({ message: `Method ${req.method} Not Allowed` });
   }
 }
