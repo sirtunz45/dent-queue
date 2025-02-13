@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/navbar';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Main() {
     return (
@@ -15,7 +16,13 @@ function Main() {
 
                 <div style={{ flex: 1, backgroundColor: '#ffffff', padding: '20px', paddingTop: '20px', overflowY: 'auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '20px', marginLeft:'0px'}}>
-                        <img src="dent.png" alt="Dentistry Image" style={{ marginTop:'20px',marginBottom: '10px', width: '80px' }} />
+                        <Image
+                            src="/dent.png"  // ใช้ path ที่ถูกต้องของภาพ
+                            alt="Dentistry Image"
+                            width={80}  // กำหนดความกว้างของภาพ
+                            height={80}  // กำหนดความสูงของภาพ
+                            style={{ marginTop: '20px', marginBottom: '10px' }}  // ใช้ style ตามที่กำหนด
+                        />
                         <h2>คลินิกทันตกรรม</h2>
                     </div>
 
@@ -47,7 +54,13 @@ function Main() {
                         </div>
                     </Link>
                     <div style={{ textAlign: 'center', marginBottom: '20px', marginLeft:'0px'}}>
-                        <img src="dentist.png" alt="Dentistry Image" style={{ marginTop:'50px',marginBottom: '100px', width: '500px' }} />
+                        <Image
+                            src="/dentist.png"  // ใช้ path ที่ถูกต้องของภาพ
+                            alt="Dentist Image"
+                            width={500}  // กำหนดความกว้างของภาพ
+                            height={500}  // กำหนดความสูงของภาพ
+                            style={{ marginTop: '50px', marginBottom: '100px' }}  // ใช้ style ตามที่กำหนด
+                        />
                     </div>
 
                 </div>

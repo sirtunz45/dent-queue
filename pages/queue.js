@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import NavBar from './components/navbar';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 function Queue() {
   const [month, setMonth] = useState(10); // พฤศจิกายน (เริ่มจาก 0)
@@ -177,7 +178,7 @@ function Queue() {
     if (confirmedDate) {
       fetchBookedTimes(confirmedDate);
     }
-  }, [confirmedDate]);
+  }, [confirmedDate, fetchBookedTimes]);
   
   const fetchBookedTimes = async (date) => {
     try {
@@ -204,11 +205,13 @@ function Queue() {
       <div style={{ display: 'flex', paddingTop: '70px', minHeight: '100vh' }}>
         <div style={{ flex: 1, backgroundColor: '#ffffff', padding: '20px', overflowY: 'auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <img
-              src="dent.png"
-              alt="Dentistry Image"
-              style={{ marginTop: '20px', marginBottom: '10px', width: '80px' }}
-            />
+          <Image
+            src="/dent.png"  // ใช้ path ที่ถูกต้องของภาพ
+            alt="Dentistry Image"
+            width={80}  // กำหนดความกว้างของภาพ
+            height={80}  // กำหนดความสูงของภาพ
+            style={{ marginTop: '20px', marginBottom: '10px' }}  // ใช้ style ตามที่กำหนด
+          />
             <h2>จองคิวทันตกรรม</h2>
             <p>กรอกข้อมูลการจองคิว</p>
           </div>

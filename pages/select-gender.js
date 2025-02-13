@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import NavBar from './components/navbar';
+import Image from 'next/image';
 
 function SelectGender() {
     const router = useRouter();
@@ -26,10 +27,12 @@ function SelectGender() {
                 <NavBar />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 100px)', flexDirection: 'column' }}>
-                <img
-                    src="dent.png"
+                <Image
+                    src="/dent.png"  // ใช้ path ที่ถูกต้องของภาพ
                     alt="Dentistry Image"
-                    style={{ marginTop: '20px', marginBottom: '10px', width: '80px' }}
+                    width={80}  // กำหนดความกว้างของภาพ
+                    height={80}  // กำหนดความสูงของภาพ
+                    style={{ marginTop: '20px', marginBottom: '10px' }}  // ใช้ style ตามที่กำหนด
                 />
                 <h2>คลินิกทันตกรรม</h2>
                 <h3>โปรดเลือกเพศ</h3>
