@@ -178,12 +178,6 @@ function Queue() {
   const calendar = renderCalendar(month, year);
   const [bookedTimes, setBookedTimes] = useState([]);
 
-  useEffect(() => {
-    if (confirmedDate) {
-      fetchBookedTimes(confirmedDate);
-    }
-  }, [confirmedDate, fetchBookedTimes]);
-  
   const fetchBookedTimes = async (date) => {
     try {
       const response = await axios.get('/api/db', { params: { date } });
@@ -199,6 +193,15 @@ function Queue() {
       console.error('Error fetching booked times:', error);
     }
   };
+
+  useEffect(() => {
+    if (confirmedDate) {  // ตรวจสอบว่า confirmedDate มีค่า
+      fetchBookedTimes(confirmedDate);
+    }
+  }, [confirmedDate]);
+  
+  
+  
   
   return (
     <div style={{ fontFamily: 'sans-serif', margin: 0, padding: 0, overflow: 'hidden' }}>

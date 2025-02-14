@@ -210,15 +210,7 @@ function AdminCheckQueue() {
           </div>
           <div style="display: flex; align-items: center; width: 100%;">
             <label for="phone_no" style="width: 150px; text-align: left;">เบอร์โทร:</label>
-            <input id="phone_no" class="swal2-input" value="${queue.phone_no}" style="width: calc(100% - 120px); height: 40px; border-radius: 5px;" />
-          </div>
-          <div style="display: flex; align-items: center; width: 100%;">
-            <label for="pregnant" style="width: 150px; text-align: left;">สถานะการตั้งครรภ์:</label>
-            <input id="pregnant" class="swal2-input" value="${queue.pregnant}" style="width: calc(100% - 120px); height: 40px; border-radius: 5px;" />
-          </div>
-          <div style="display: flex; align-items: center; width: 100%; ">
-            <label for="last_period" style="width: 150px; text-align: left;">วันที่เป็นประจำเดือนวันสุดท้าย:</label>
-            <input id="last_period" class="swal2-input" type="date" value="${queue.last_period ? (queue.last_period.split('T')[0]) : 'null'}" style="width: calc(100% - 120px); height: 40px; border-radius: 5px;" />
+            <input id="phone_no" class="swal2-input" value="${queue.phone_no}" style="width: calc(100% - 120px); height: 40px; border-radius: 5px;" maxlength="10" />
           </div>
           <div style="display: flex; align-items: center; width: 100%;">
             <label for="dent_cc" style="width: 150px; text-align: left;">บริการ:</label>
@@ -228,9 +220,30 @@ function AdminCheckQueue() {
             <label for="date_service" style="width: 150px; text-align: left;">วันที่บริการ:</label>
             <input id="date_service" class="swal2-input" type="date" value="${queue.date_service.split('T')[0]}" style="width: calc(100% - 120px); height: 40px; border-radius: 5px;" />
           </div>
+           <div style="display: flex; align-items: center; width: 100%; ">
+            <label for="last_period" style="width: 150px; text-align: left;">วันที่เป็นประจำเดือนวันสุดท้าย:</label>
+            <input id="last_period" class="swal2-input" type="date" value="${queue.last_period ? (queue.last_period.split('T')[0]) : 'null'}" style="width: calc(100% - 120px); height: 40px; border-radius: 5px;" />
+          </div>
+          <div style="display: flex; align-items: center; width: 100%; ">
+            <label for="pregnant" style="width: 150px; text-align: left;">สถานะการตั้งครรภ์:</label>
+            <select id="pregnant" class="swal2-input" style="width: calc(91% - 120px); height: 40px; border-radius: 5px; font-size: 20px; text-align: left; padding: 0 10px; border: 1px solid #ccc; ">
+              <option value="ตั้งครรภ์" ${queue.pregnant === "ตั้งครรภ์" ? "selected" : ""}>ไม่ระบุ</option>
+              <option value="ตั้งครรภ์" ${queue.pregnant === "ตั้งครรภ์" ? "selected" : ""}>ตั้งครรภ์</option>
+              <option value="ไม่ตั้งครรภ์" ${queue.pregnant === "ไม่ตั้งครรภ์" ? "selected" : ""}>ไม่ตั้งครรภ์</option>
+            </select>
+          </div>
+          <div style="display: flex; align-items: center; width: 100%; ">
+            <label for="treatment_right" style="width: 150px; text-align: left;">สิทธิการรักษา:</label>
+            <select id="treatment_right" class="swal2-input" style="width: calc(91% - 120px); height: 40px; border-radius: 5px; font-size: 20px; text-align: left; padding: 0 10px; border: 1px solid #ccc; ">
+              <option value="สิทธิประกันสังคม" ${queue.treatment_right === "สิทธิประกันสังคม" ? "selected" : ""}>สิทธิประกันสังคม</option>
+              <option value="สิทธิข้าราชการ" ${queue.treatment_right === "สิทธิข้าราชการ" ? "selected" : ""}>สิทธิข้าราชการ</option>
+              <option value="สิทธิอื่นๆ" ${queue.treatment_right === "สิทธิอื่นๆ" ? "selected" : ""}>สิทธิอื่นๆ</option>
+            </select>
+          </div>
+          
           <div style="display: flex; align-items: center; width: 100%;">
             <label for="time_service" style="width: 150px; text-align: left; margin-left: 3px;">ช่วงเวลา:</label>
-            <select id="time_service" class="swal2-input" style="width: calc(90% - 120px); height: 40px; border-radius: 5px; font-size: 20px; text-align: center;">
+            <select id="time_service" class="swal2-input" style="width: calc(91% - 120px); height: 40px; border-radius: 5px; font-size: 20px; text-align: center;">
               <option value="09.00 - 10.00" ${queue.time_service === "09.00 - 10.00" ? "selected" : ""}>09.00 - 10.00</option>
               <option value="10.00 - 11.00" ${queue.time_service === "10.00 - 11.00" ? "selected" : ""}>10.00 - 11.00</option>
               <option value="11.00 - 12.00" ${queue.time_service === "11.00 - 12.00" ? "selected" : ""}>11.00 - 12.00</option>
@@ -252,6 +265,7 @@ function AdminCheckQueue() {
           pregnant: document.getElementById("pregnant").value,
           last_period: document.getElementById("last_period").value,
           dent_cc: document.getElementById("dent_cc").value,
+          treatment_right : document.getElementById("treatment_right").value,
           date_service: document.getElementById("date_service").value,
           time_service: time_service,
           time_state: mapTimeServiceToState(time_service),

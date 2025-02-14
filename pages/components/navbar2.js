@@ -7,10 +7,10 @@ function NavBarAdmin() {
         <div style={{ backgroundColor: '#9ad9db', color: '#000', padding: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Image
-              src="/dent.png"  // ใช้ path ที่ถูกต้องของภาพ
-              alt="Dentistry Image"
-              width={40}  // กำหนดความกว้างของภาพ
-              height={40}  // กำหนดความสูงของภาพ
+                src="/dent.png"  // ใช้ path ที่ถูกต้องของภาพ
+                alt="Dentistry Image"
+                width={40}  // กำหนดความกว้างของภาพ
+                height={40}  // กำหนดความสูงของภาพ
             />
                 <div style={{ fontSize: '20px' }}>คลินิกทันตกรรม</div>
             </div>
