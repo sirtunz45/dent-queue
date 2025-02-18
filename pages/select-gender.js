@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import NavBar from './components/navbar';
 import Image from 'next/image';
+import Swal from 'sweetalert2';
 
 function SelectGender() {
     const router = useRouter();
@@ -17,7 +18,13 @@ function SelectGender() {
         } else if (selectedGender === 'female') {
             router.push('/queue-women');
         } else {
-            alert('โปรดเลือกเพศก่อนดำเนินการ');
+            // แสดง SweetAlert ถ้าไม่ได้เลือกเพศ
+            Swal.fire({
+                icon: 'warning',
+                title: 'โปรดเลือกเพศก่อนดำเนินการ',
+                text: 'กรุณาเลือกเพศเพื่อดำเนินการต่อ',
+                confirmButtonText: 'ตกลง',
+            });
         }
     };
 

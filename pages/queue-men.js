@@ -5,7 +5,7 @@ import NavBar from './components/navbar';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-function Queue() {
+function QueueMen() {
   const [month, setMonth] = useState(10); // พฤศจิกายน (เริ่มจาก 0)
   const [year, setYear] = useState(2567); // ปี พ.ศ.
   const [showCalendar, setShowCalendar] = useState(false);
@@ -548,4 +548,4 @@ function Queue() {
   );
 }
 
-export default Queue;
+export default QueueMen;

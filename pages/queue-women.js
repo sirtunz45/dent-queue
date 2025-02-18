@@ -5,7 +5,7 @@ import NavBar from './components/navbar';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-function Queue() {
+function QueueWomen() {
   const [month, setMonth] = useState(10); // พฤศจิกายน (เริ่มจาก 0)
   const [year, setYear] = useState(2567); // ปี พ.ศ.
   const [showCalendar, setShowCalendar] = useState(false);
@@ -104,11 +104,23 @@ function Queue() {
   };
 
   const handleConfirmBooking = () => {
+    const isPhoneValid = phone.length === 10 && /^\d+$/.test(phone);
     if (!name || !surname || !phone || !dentalService || !confirmedDate || !selectedTime || !treatmentRight) {
       Swal.fire({
         icon: 'warning',
         title: 'กรุณากรอกข้อมูลให้ครบ',
         text: 'โปรดกรอกข้อมูลให้ครบทุกช่องก่อนยืนยันการจอง',
+        confirmButtonText: 'ตกลง',
+        confirmButtonColor: '#fe1d93',
+      });
+      return;
+    }
+
+    if (!isPhoneValid) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'หมายเลขโทรศัพท์ไม่ถูกต้อง',
+        text: 'กรุณากรอกหมายเลขโทรศัพท์ 10 หลัก',
         confirmButtonText: 'ตกลง',
         confirmButtonColor: '#fe1d93',
       });
@@ -617,4 +629,4 @@ function Queue() {
   );
 }
 
-export default Queue;
+export default QueueWomen;

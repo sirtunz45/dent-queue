@@ -18,7 +18,12 @@ function SelectPregnant() {
         } else if (selectedGender === 'not-pregnant') {
             router.push('/queue-women-not-pregnant');
         } else {
-            alert('โปรดเลือกเพศก่อนดำเนินการ');
+            Swal.fire({
+                icon: 'warning',
+                title: 'โปรดเลือกสถานะการตั้งครรภ์',
+                text: 'โปรดเลือกสถานะการตั้งครรภ์ก่อนดำเนินการต่อ',
+                confirmButtonText: 'ตกลง',
+            });
         }
     };
 

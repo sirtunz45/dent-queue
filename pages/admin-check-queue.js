@@ -242,7 +242,7 @@ function AdminCheckQueue() {
           </div>
           
           <div style="display: flex; align-items: center; width: 100%;">
-            <label for="time_service" style="width: 150px; text-align: left; margin-left: 3px;">ช่วงเวลา:</label>
+            <label for="time_service" style="width: 150px; text-align: left;">ช่วงเวลา:</label>
             <select id="time_service" class="swal2-input" style="width: calc(91% - 120px); height: 40px; border-radius: 5px; font-size: 20px; text-align: center;">
               <option value="09.00 - 10.00" ${queue.time_service === "09.00 - 10.00" ? "selected" : ""}>09.00 - 10.00</option>
               <option value="10.00 - 11.00" ${queue.time_service === "10.00 - 11.00" ? "selected" : ""}>10.00 - 11.00</option>

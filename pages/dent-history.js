@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import NavBarAdmin from './components/navbar2';
 import Image from 'next/image';
 
-function AdminCheckQueue() {
+function DentHistory() {
   const [queueData, setQueueData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -134,7 +134,7 @@ function AdminCheckQueue() {
   
   {/*<p><b>สถานะ:</b> ${queue.status}</p>*/}
 
-  const handleViewDetails = async (queue) => {
+  /*const handleViewDetails = async (queue) => {
   await Swal.fire({
     icon: 'info',
     title: 'รายละเอียด',
@@ -166,7 +166,7 @@ function AdminCheckQueue() {
       };
     },
   });
-};
+};*/
 
 const updateQueueStatus = async (id, status) => {
   try {
@@ -279,7 +279,7 @@ const updateQueueStatus = async (id, status) => {
                   <th style={{ border: '1px solid #ddd', padding: '8px' }}>วันที่บริการ</th>
                   <th style={{ border: '1px solid #ddd', padding: '8px' }}>ช่วงเวลา</th>
                   <th style={{ border: '1px solid #ddd', padding: '8px' }}>สถานะ</th>
-                  <th style={{ border: '1px solid #ddd', padding: '8px' }}>จัดการ</th>
+                  {/*<th style={{ border: '1px solid #ddd', padding: '8px' }}>จัดการ</th>*/}
                 </tr>
               </thead>
               <tbody>
@@ -294,8 +294,10 @@ const updateQueueStatus = async (id, status) => {
                       {formatThaiDate(queue.date_service.split('T')[0])}
                     </td>
                     <td style={{ border: '1px solid #ddd', padding: '8px' }}>{queue.time_service}</td>
-                    <td style={{ border: '1px solid #ddd', padding: '8px' }}>{queue.status}</td>
-                    <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
+                    <td style={{ border: '1px solid #ddd', padding: '8px', color: queue.status === 'ดำเนินการแล้ว' ? 'green' : queue.status === 'ยกเลิกคิว' ? 'red' : 'black' }}>
+                      {queue.status}
+                    </td>
+                    {/*<td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
                       <button
                         onClick={() => handleViewDetails(queue)}
                         style={{
@@ -310,7 +312,7 @@ const updateQueueStatus = async (id, status) => {
                       >
                         ดูรายละเอียด
                       </button>
-                    </td>
+                    </td>*/}
                   </tr>
                 ))}
               </tbody>
@@ -322,4 +324,4 @@ const updateQueueStatus = async (id, status) => {
   );
 }
 
-export default AdminCheckQueue;
+export default DentHistory;
