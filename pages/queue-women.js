@@ -105,7 +105,7 @@ function QueueWomen() {
 
   const handleConfirmBooking = () => {
     const isPhoneValid = phone.length === 10 && /^\d+$/.test(phone);
-    if (!name || !surname || !phone || !dentalService || !confirmedDate || !selectedTime || !treatmentRight) {
+    if (!name || !surname || !phone || !dentalService || !confirmedDate || !selectedTime || !treatmentRight || !isPregnant) {
       Swal.fire({
         icon: 'warning',
         title: 'กรุณากรอกข้อมูลให้ครบ',
@@ -226,11 +226,6 @@ function QueueWomen() {
       fetchBookedTimes(confirmedDate);
     }
   }, [confirmedDate]);
-  
-  
-  
-
-  
   
   return (
     <div style={{ fontFamily: 'sans-serif', margin: 0, padding: 0, overflow: 'hidden' }}>

@@ -34,7 +34,7 @@ function MainAdmin() {
                             style={{ width: '60%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
                         />
                     </div>*/}
-                    <Link href="/select-gender"  style={{ textDecoration: 'none' }}>
+                    {/*<Link href="/select-gender"  style={{ textDecoration: 'none' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             <button style={{
                                 width: '60%', 
@@ -52,7 +52,7 @@ function MainAdmin() {
                                 จองคิวทันตกรรม
                             </button>
                         </div>
-                    </Link>
+                    </Link>*/}
                     <div style={{ textAlign: 'center', marginBottom: '20px', marginLeft:'0px'}}>
                         <Image
                             src="/dentist.png"  // ใช้ path ที่ถูกต้องของภาพ
