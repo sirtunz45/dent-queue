@@ -153,6 +153,7 @@ function Queue() {
           title: "จองคิวเรียบร้อยแล้ว",
           text: "ระบบได้ทำการจองคิวเรียบร้อยแล้ว",
           confirmButtonText: "ตกลง",
+          confirmButtonColor: "#28a745"
         }).then(() => {
           router.push("/"); // เปลี่ยนหน้าไปยังหน้าแรก
         });
@@ -162,6 +163,7 @@ function Queue() {
           title: "เกิดข้อผิดพลาด",
           text: "ไม่สามารถจองคิวได้ กรุณาลองใหม่อีกครั้ง",
           confirmButtonText: "ตกลง",
+          confirmButtonColor: "#28a745"
         });
       }
     } catch (error) {
@@ -447,23 +449,23 @@ function Queue() {
 
             <div style={{ textAlign: 'center', marginTop: '20px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', alignItems: 'center', justifyContent: 'center' }}>
             {Object.keys(timeStateMapping).map((time) => (
-  <button
-    key={time}
-    onClick={() => setSelectedTime(time)}
-    style={{
-      padding: '10px 20px',
-      margin: '5px',
-      borderRadius: '5px',
-      border: '1px solid #ccc',
-      backgroundColor: bookedTimes.includes(time) ? 'grey' : (selectedTime === time ? '#e676c5' : '#fe1d93'),
-      color: '#fff',
-      cursor: bookedTimes.includes(time) ? 'not-allowed' : 'pointer',
-    }}
-    disabled={bookedTimes.includes(time)} // ปิดการใช้งานปุ่มหากเวลาโดนจองแล้ว
-  >
-    {time}
-  </button>
-))}
+              <button
+                key={time}
+                onClick={() => setSelectedTime(time)}
+                style={{
+                  padding: '10px 20px',
+                  margin: '5px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                  backgroundColor: bookedTimes.includes(time) ? 'grey' : (selectedTime === time ? '#e676c5' : '#fe1d93'),
+                  color: '#fff',
+                  cursor: bookedTimes.includes(time) ? 'not-allowed' : 'pointer',
+                }}
+                disabled={bookedTimes.includes(time)} // ปิดการใช้งานปุ่มหากเวลาโดนจองแล้ว
+              >
+                {time}
+              </button>
+            ))}
 
             </div>
 
@@ -518,6 +520,9 @@ function Queue() {
                   <p>สิทธิการรักษา: {treatmentRight}</p>
                   <p>วันที่: {confirmedDate}</p>
                   <p>เวลา: {selectedTime}</p>
+                  <p style={{ color: 'red', fontSize: '14px', textAlign: 'center', marginTop: '10px' }}>
+                    *โปรดนำบัตรประชาชนมาเข้ารับบริการทุกครั้ง และกรุณามาก่อนเวลานัด 15 นาที
+                  </p>
                   <button
                     onClick={handleConfirmBookingPopup}
                     style={{

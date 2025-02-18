@@ -86,7 +86,7 @@ function CheckQueue() {
               alt="Dentistry Image"
               width={80}  // กำหนดความกว้างของภาพ
               height={80}  // กำหนดความสูงของภาพ
-              style={{ marginTop: '20px', marginBottom: '10px' }}  // ใช้ style ตามที่กำหนด
+              style={{ marginTop: '50px', marginBottom: '10px' }}  // ใช้ style ตามที่กำหนด
             />
             <h2>ตรวจสอบคิว</h2>
 
